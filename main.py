@@ -12,8 +12,6 @@ import time
 import sys
 import th,os
 import rw_file
-import join_file
-
 
 
 
