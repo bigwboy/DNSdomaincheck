@@ -25,7 +25,7 @@ class OPfile():
     def get_part_file_name(self):
         """"获取分割后的文件名称：在源文件相同目录下建立临时文件夹temp_part_file，然后将分割后的文件放到该路径下"""
         temp_path = os.path.dirname(self.file_name)  # 获取文件的路径（不含文件名）
-        part_file_name = temp_path + "/temp_part_file"
+        part_file_name = temp_path + "\\temp_part_file"
         if not os.path.exists(part_file_name):  # 如果临时目录不存在则创建
                 try:
                     os.makedirs(part_file_name)

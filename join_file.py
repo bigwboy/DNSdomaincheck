@@ -33,10 +33,6 @@ def GetFileFromThisDir(dir,ext = None):
 def open_new_File(file_name):  # 打开文件
     f = open(file_name, 'rb')  # 打开文件
     lines = f.readlines()  # 读取单个文件的每一行
-    #print lines
-    #for i in lines:
-    #    print i.split()
-        #domain.append(data[5])
     return lines
 
 def join_check_file(file_name):

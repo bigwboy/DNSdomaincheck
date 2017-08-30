@@ -19,8 +19,8 @@ import rw_file
 
 
 if __name__=="__main__":
-    file_name=sys.argv[1]
-    #file_name='/home/liuguangwei/PycharmProjects/bigdata/url.xls'
+    #file_name=sys.argv[1]
+    file_name='D:\pythonobject\DNSdomaincheck\jiangsudns20170731'
     print file_name
     if file_name:
         print "分析开始：" + str(time.clock())

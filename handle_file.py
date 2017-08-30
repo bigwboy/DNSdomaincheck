@@ -11,26 +11,44 @@ import os
 import time
 import th
 
+import re,IPy
+
+
+
+
+
 class handle():   #处理文件类
     def __init__(self,dirNum,file_name):
         self.dirNum=dirNum
         self.file_name=file_name
+        self.DomainReg = re.compile('(?i)\\b((?=[a-z0-9-]{1,63}\\.)(xn--)?[a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,63}\\b')
+        self.IpReg = re.compile(r'(?<![\.\d])(?:\d{1,3}\.){3}\d{1,3}(?![\.\d])')
         #self.path='./temp_part_file/'
-    def openFile(self,file_name): #打开分片的文件
+    def openFile(self): #打开分片的文件
                 #file_name=self.path+self.file_name
                 f = open(self.file_name, 'rb') #打开文件
                 lines = f.readlines()  #读取单个文件的每一行
                 i = 0
-                domain = []
+                Domain = []
+                LocalIp=[]
                 for line in lines:
                     i = i + 1
-                    data = line.split()
+                    DataList = line.split('|')
                     # 判断字符是否为异常
-                    if len(data) < 3:
+                    if len(DataList) < 3:
                         continue
-                    domain.append(data[5])
-                return domain
-        # 对读取的数据金喜排序和统计工作
+                    for Data in DataList:
+
+                        if self.DomainReg.findall(Data):
+                            # 域名判断
+                            Domain.append(Data)
+                        elif self.IpReg.findall(Data):
+                            # ip判断
+                            LocalIp.append(Data)
+
+
+                return Domain
+        # 对读取的数据进行排序和统计工作
     def opera(self):
         i = 0
         dict1 = {}
@@ -69,5 +87,5 @@ class handle():   #处理文件类
 
 
 if __name__=="__main__":
-    test=handle(2,'./temp_part_file/temp_file_3.part')
+    test=handle(2,'D:\pythonobject\DNSdomaincheck\\temp_part_file\\temp_file_3.part')
     test.opera()
