@@ -6,7 +6,10 @@
 #!/usr/bin/env python
 #--*-- coding:utf-8 --*--
 import os
+
 import rw_file
+
+
 class SplitFiles():
     """按行分割文件"""
     def __init__(self, file_name, line_count=1000):
@@ -25,7 +28,7 @@ class SplitFiles():
                         if temp_count < self.line_count:
                             temp_count += 1
                         else :
-                            split=rw_file.OPfile(part_num, self.file_name,False,temp_content)
+                            split= rw_file.OPfile(part_num, self.file_name, False, temp_content)
                             #part_num文件编号
                             #self.file_name  文件名
                             #tpye=False #切片开关
@@ -36,7 +39,7 @@ class SplitFiles():
                             temp_content = []
                         temp_content.append(line)
                     else : # 正常结束循环后将剩余的内容写入新文件中
-                        split = rw_file.OPfile(part_num, self.file_name,False, temp_content)
+                        split = rw_file.OPfile(part_num, self.file_name, False, temp_content)
                         # part_num文件编号
                         # self.file_name  文件名
                         # tpye=False #切片开关

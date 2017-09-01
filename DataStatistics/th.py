@@ -6,8 +6,9 @@
 
 # encoding: UTF-8
 import threading
-import time
+
 import handle_file
+
 
 class MyThread(threading.Thread):
     def __init__(self,fileNum,file_list):
@@ -15,7 +16,7 @@ class MyThread(threading.Thread):
         self.file_data=file_list
         self.fileNum=fileNum
     def run(self):
-        check_file=handle_file.handle(self.fileNum,self.file_data) #单个进程处理单个文件
+        check_file= handle_file.handle(self.fileNum, self.file_data) #单个进程处理单个文件
         check_file.opera()
         #print "12121" +str(self.file_data)
         #self.stop() #完成后关闭线程
@@ -30,7 +31,7 @@ def create_Thread(fileNum,file_list):
             t.start()
             i+=1
             t.join()
-        print "线程结束"
+        #print "线程结束"
 
 
 

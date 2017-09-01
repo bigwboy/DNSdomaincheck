@@ -52,8 +52,6 @@ def join_check_file(file_name):
     dict = sorted(dict1.iteritems(), key=lambda d: d[1], reverse=True)
     print "check over time:" + str(time.clock())
 
-
-
 def write_execl(dict,all_value):
     # dict 需要写入文件的数据列表
     #all_value 所有出网访问总和
@@ -64,8 +62,8 @@ def write_execl(dict,all_value):
     ws.write(0, 1, u'访问次数')
     ws.write(0, 2, u'域名占比')
     item = 0
-    # 只写入TOP100
-    while item < 100:
+    # # 只写入TOP10000
+    while item < 10000:
         # while item<100:
         row = 0
         while row < 2:
@@ -76,8 +74,20 @@ def write_execl(dict,all_value):
         item += 1
         wb.save('top100.xls')
 
-    print "汇总数据写入top100.xls文件完成！"
-    print "stoptime:" + str(time.clock())
+def WriteTxt(Dict,AllValue,dir):
+    OutFileDir=dir.strip('temp_part_file')+'OutFile\\'
+    wb=open((OutFileDir+'Statistics.txt'),'wb')
+    item=0
+    for Wrline in Dict:
+        if item < AllValue:
+            Wdata=str(item+1)+','+str(Wrline[0])+','+str(Wrline[1])+','+str(format(Wrline[1] / float(AllValue), ".2%"))+'\n'
+            item+=1
+            wb.writelines(Wdata)
+        else:
+            break
+
+    print "汇总数据写入Statistics.txt文件完成！"
+    print "汇总结束时间:" + str(time.clock())
 
 
 def join_main(dir,ext):
@@ -90,23 +100,28 @@ def join_main(dir,ext):
         i=0
         while i < len(new_life_line):
             for domain_data in new_life_line:
-                    _key = domain_data.split()[0]  #域名为键值
+                    key = domain_data.split()[0]  #域名为键值
                     if domain_data.split()[0] not in line_data:
-                        _value = domain_data.split()[1]  #域名访问次数为value
-                        line_data.setdefault(_key, int(_value))
+                        try:
+                            #value = domain_data.split()[1]  #域名访问次数为value
+                            value=domain_data.strip()[-1]
+                            line_data.setdefault(key, int(value))
+                        except Exception,e:
+                            print str(e)+':'+domain_data
                     else:
-                        line_data[_key]=int(line_data[_key])+int(domain_data.split()[1])
+                        line_data[key]=int(line_data[key])+int(domain_data.split()[-1])
                     i = i + 1
     line_d =sorted(line_data.iteritems(), key=lambda d: d[1], reverse=True)
     all_value=0
     for i in line_d:
         all_value= all_value+ int(i[1])
     #print all_value
-    write_execl(line_d,all_value) #写入EXECL文件
+    #write_execl(line_d,all_value) #写入EXECL文件
+    WriteTxt(line_d, all_value,dir)
 
 
 
 
 
 if __name__=="__main__":
-    join_main('/home/liuguangwei/PycharmProjects/bigdata/temp_part_file','new')
+    join_main('D:\\pythonobject\\DNSdomaincheck\\temp_part_file','new')

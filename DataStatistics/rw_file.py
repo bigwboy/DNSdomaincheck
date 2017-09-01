@@ -39,7 +39,7 @@ class OPfile():
     def write_file(self):
         if self.type:
             part_file_name=self.file_name+".new"
-            print  self.file_name +".new" + '\t' + "正在写入。。。"
+            #print  self.file_name +".new" + '\t' + "正在写入。。。"
             #print "self.line_content:    "+str(self.line_content)
             try:
                 with open(part_file_name, "w+") as part_file:
@@ -49,18 +49,18 @@ class OPfile():
                             part_file.writelines(str(data_line[0])+" "+str(data_line[1])+'\n')
             except IOError as err:
                 print(err)
-            print  part_file_name + "写入完成！"
+            #print  part_file_name + "写入完成！"
             return part_file_name
         else:
             part_file_name = self.get_part_file_name()
             """将按行分割后的内容写入相应的分割文件中"""
-            print "temp_file_" + str(self.part_num) + ".part" + '\t' + "正在写入。。。"
+            #print "temp_file_" + str(self.part_num) + ".part" + '\t' + "正在写入。。。"
             try:
                 with open(part_file_name, "w") as part_file:
                     part_file.writelines(self.line_content[0])
             except IOError as err:
                 print(err)
-            print "temp_file_" + str(self.part_num) + ".part" + '\t' + "写入成功"
+            #print "temp_file_" + str(self.part_num) + ".part" + '\t' + "写入成功"
             return part_file_name
 
 
