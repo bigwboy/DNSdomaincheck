@@ -24,13 +24,18 @@ class MyThread(threading.Thread):
         self.thread_stop = True
         print "线程关闭~!!"
 def create_Thread(fileNum,file_list):
-        i=0
+        Threadings=[]
         ThreadNum=len(file_list)
-        for i in range(ThreadNum):#创建10个线程
+        #创建10个进程
+        for i in range(ThreadNum):
             t = MyThread(fileNum,str(file_list[i]))
-            t.start()
-            i+=1
-            t.join()
+            Threadings.append(t)
+        #开启10个进程
+        for i in range(ThreadNum):
+            Threadings[i].start()
+        #登录所有线程结束
+        for i in range(ThreadNum):
+            Threadings[i].join()
         #print "线程结束"
 
 

@@ -37,22 +37,21 @@ def DomainAnalysisThreading(DomainDict):
             # th.stop_Thread()  # 执行完成后关闭
 
 #解析域名
-def DomainAnalysis(DomainList):
+def DomainAnalysis(Domain):
     DNS.DiscoverNameServers()
     reqobj = DNS.Request()
     reqobj.defaults['server'] = ['113.215.2.222']
     ReturnData=[]
-    for domain in DomainList:
-        domain=domain[0]
-        Returndomain=[]
-        j = False
-        try:
-            answerobj = reqobj.req(name=domain,qtype = DNS.Type.A)
-            x = answerobj.answers
-            if not x:
-                ReturnData.append(str(domain) + "," + "False" )
-        except Exception,e:
-            pass
+    Returndomain=[]
+    j=False
+    try:
+        answerobj = reqobj.req(name=Domain,qtype = DNS.Type.A)
+        x = answerobj.answers
+        if not x:
+            ReturnData.append(str(Domain) + "," + "False" )
+    except Exception,e:
+        print e
+        pass
 
 
 

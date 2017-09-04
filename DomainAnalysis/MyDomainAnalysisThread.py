@@ -22,14 +22,21 @@ class MyThread(threading.Thread):
         self.thread_stop = True
         print "线程关闭~!!"
 def create_Thread(DomainNum,DomainList):
-        i=0
-        ThreadNum=len(DomainList)
-        for i in range(ThreadNum):#创建10个线程
-            t = MyThread(DomainNum,DomainList)
-            t.start()
-            i+=1
-            t.join()
-        #print "线程结束"
+    Threadings = []
+    ThreadNum = len(DomainList)
+
+    # 创建ThreadNum个进程
+    for i in range(ThreadNum):
+        t = MyThread(DomainNum, DomainList[i][0])
+        Threadings.append(t)
+    # 开启所有进程
+    for i in range(ThreadNum):
+        Threadings[i].start()
+    # 等待所有线程结束
+    for i in range(ThreadNum):
+        Threadings[i].join()
+
+    #print "线程结束"
 #DEBUG
 if __name__ == "__main__":
     pass
