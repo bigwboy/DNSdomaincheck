@@ -5,7 +5,7 @@
 #Email:kevinliu830829@163.com
 import DNS
 import RoadWriteFile
-
+import MyDomainAnalysisThread
 #域名解析
 def DomainAnalysis(DomainList):
     DNS.DiscoverNameServers()
