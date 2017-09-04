@@ -19,7 +19,7 @@ def DomainAnalysisThreading(DomainDict):
                 i = 0
                 while i < 10:  # 每次读取10个域名
                     # print i
-                    DomainList.append(list(DomainDict)[i])
+                    DomainList.append(DomainDict.items()[i])
                     i += 1
                 MyDomainAnalysisThread.create_Thread(ThreadNum, DomainList)  # 创建10线程
                 # f 当前循环次数
@@ -27,7 +27,7 @@ def DomainAnalysisThreading(DomainDict):
                 # th.stop_Thread()  # 执行完成后关
                 if len(DomainDict):
                     for i in DomainList:
-                        DomainDict.pop(i)  # 将已处理的域名剔除
+                        DomainDict.pop(i[0])  # 将已处理的域名剔除
                 f += 1
             if len(DomainDict):
                 MyDomainAnalysisThread.create_Thread(DomainListNum // 10, DomainDict.keys())
@@ -43,7 +43,7 @@ def DomainAnalysis(DomainList):
     reqobj.defaults['server'] = ['113.215.2.222']
     ReturnData=[]
     for domain in DomainList:
-        domain=domain.strip('\n')
+        domain=domain[0]
         Returndomain=[]
         j = False
         try:
@@ -71,4 +71,4 @@ def PretereatmentData(AnalyzeData):
 if __name__ == "__main__":
     AnalyzeData = RoadWriteFile.ReadFile('..\\OutFile\\Statistics.txt')
     DomainDict=PretereatmentData(AnalyzeData.ReturnData())
-    DomainAnalysis(DomainDict)
+    DomainAnalysisThreading(DomainDict)

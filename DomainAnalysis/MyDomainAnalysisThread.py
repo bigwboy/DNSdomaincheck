@@ -9,23 +9,23 @@ import DomainAnalysis
 
 
 class MyThread(threading.Thread):
-    def __init__(self,DomainList,DomainNum):
+    def __init__(self,DomainNum,Domain):
         threading.Thread.__init__(self)
-        self.file_data=DomainList
-        self.fileNum=DomainNum
+        self.Domain=Domain
+        self.DomainNum=DomainNum
     def run(self):
-        AnalysitData= DomainAnalysis.DomainAnalysis(self.fileNum, self.file_data) #单个进程处理单个文件
-        check_file.opera()
+        AnalysitData= DomainAnalysis.DomainAnalysis(self.Domain) #单个进程处理单个文件
+        AnalysitData.opera()
         #print "12121" +str(self.file_data)
         #self.stop() #完成后关闭线程
     def stop(self):
         self.thread_stop = True
         print "线程关闭~!!"
-def create_Thread(fileNum,file_list):
+def create_Thread(DomainNum,DomainList):
         i=0
-        ThreadNum=len(file_list)
+        ThreadNum=len(DomainList)
         for i in range(ThreadNum):#创建10个线程
-            t = MyThread(fileNum,str(file_list[i]))
+            t = MyThread(DomainNum,DomainList)
             t.start()
             i+=1
             t.join()
