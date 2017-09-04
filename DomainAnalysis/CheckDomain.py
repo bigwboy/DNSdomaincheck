@@ -93,7 +93,7 @@ def ProcessData(cname,CDNList):
 
 #DEBUG
 if __name__ == "__main__":
-    DataStatistics= StatisticsMain.DataStatistics('..\\jiangsudns20170731')
+    DataStatistics= StatisticsMain.DataStatistics('..\\AnalyzeData\\jiangsudns20170731')
     if not DataStatistics :
         print '文件汇总统计错误~！'
     DomainList=RoadWriteFile.ReadFile('..\\OutFile\\Statistics.txt')

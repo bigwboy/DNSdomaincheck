@@ -9,12 +9,12 @@ import DomainAnalysis
 
 
 class MyThread(threading.Thread):
-    def __init__(self,DomainList,file_list):
+    def __init__(self,DomainList,DomainNum):
         threading.Thread.__init__(self)
-        self.file_data=file_list
-        self.fileNum=fileNum
+        self.file_data=DomainList
+        self.fileNum=DomainNum
     def run(self):
-        check_file= handle_file.handle(self.fileNum, self.file_data) #单个进程处理单个文件
+        AnalysitData= DomainAnalysis.DomainAnalysis(self.fileNum, self.file_data) #单个进程处理单个文件
         check_file.opera()
         #print "12121" +str(self.file_data)
         #self.stop() #完成后关闭线程
