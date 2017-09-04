@@ -11,7 +11,7 @@ import time
 
 import join_file
 import split_data
-import th
+import MyMultithreadingStatistics
 
 
 def DataStatistics(file_name):
@@ -42,7 +42,7 @@ def DataStatistics(file_name):
                     # print i
                     headle_file_list.append(section_data[i])
                     i += 1
-                th.create_Thread(ThreadNum, headle_file_list)  # 创建10线程
+                MyMultithreadingStatistics.create_Thread(ThreadNum, headle_file_list)  # 创建10线程
                 # f 当前循环次数
                 # 待处理的文件列表
                 # th.stop_Thread()  # 执行完成后关
@@ -51,10 +51,10 @@ def DataStatistics(file_name):
                         section_data.remove(i)  # 将已处理的文件名剔除
                 f += 1
             if len(section_data):
-                th.create_Thread(FileNum // 10, section_data)
+                MyMultithreadingStatistics.create_Thread(FileNum // 10, section_data)
         else:
             # print "section"+str(section_data)
-            th.create_Thread(FileNum, section_data)  # 创建线程
+            MyMultithreadingStatistics.create_Thread(FileNum, section_data)  # 创建线程
             # th.stop_Thread()  # 执行完成后关闭
 
         print "分析文件" + file_name + " 完成！ 用时：" + str(time.clock())

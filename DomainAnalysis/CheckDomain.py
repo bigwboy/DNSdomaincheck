@@ -10,20 +10,9 @@ from  DataStatistics import StatisticsMain
 import RoadWriteFile
 import  DNS,IPy,re,xlrd
 
-#域名解析
-def DomainAnalysis(DomainList):
-    DNS.DiscoverNameServers()
-    reqobj = DNS.Request()
-    reqobj.defaults['server'] = ['113.215.2.222']
 
 
-#检测CDN属性
-def CheckDomainCdn():
-    pass
 
-#检测内外网
-def InternalOrExternalNetwork():
-    pass
 
 def CheckDomain(DomainList,CDNList,IPList):
     DNS.DiscoverNameServers()

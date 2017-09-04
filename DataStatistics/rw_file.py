@@ -6,7 +6,7 @@
 #!/usr/bin/env python
 #--*-- coding:utf-8 --*--
 import os
-import th
+import MyMultithreadingStatistics
 import pyExcelerator
 import time
 
