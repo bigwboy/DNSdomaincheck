@@ -34,8 +34,10 @@ def DomainAnalysisThreading(DomainDict):
             if len(DomainDict):
                 MyDomainAnalysisThread.create_Thread(DomainListNum // 10, DomainDict.keys())
     else:
-            # print "section"+str(DomainList)
-            MyDomainAnalysisThread.create_Thread(DomainListNum, DomainDict)  # 创建线程
+        DomainList = []
+        for i in DomainDict:
+            DomainList.append(DomainDict.items()[i])
+        MyDomainAnalysisThread.create_Thread(DomainListNum, DomainDict)  # 创建线程
             # th.stop_Thread()  # 执行完成后关闭
 
 #解析域名
