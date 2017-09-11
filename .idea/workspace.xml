@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a06aa305-0a9e-4cb0-b379-a69e6d8a5bfc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataStatistics/StatisticsMain.py" afterPath="$PROJECT_DIR$/DataStatistics/StatisticsMain.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataStatistics/handle_file.py" afterPath="$PROJECT_DIR$/DataStatistics/handle_file.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DomainAnalysis/CheckDomain.py" afterPath="$PROJECT_DIR$/DomainAnalysis/CheckDomain.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DomainAnalysis/DomainAnalysis.py" afterPath="$PROJECT_DIR$/DomainAnalysis/DomainAnalysis.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DomainAnalysis/MyDomainAnalysisThread.py" afterPath="$PROJECT_DIR$/DomainAnalysis/MyDomainAnalysisThread.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -637,19 +632,25 @@
       <option name="project" value="LOCAL" />
       <updated>1504517830337</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="完善支持">
+      <created>1505100570929</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1505100570929</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27292264" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.80458224" sideWeight="0.3252149" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3207547" sideWeight="0.8316619" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.80458224" sideWeight="0.6747851" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.80458224" sideWeight="0.6747851" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2735849" sideWeight="0.49713466" order="9" side_tool="false" content_ui="tabs" />
@@ -715,7 +716,8 @@
     <MESSAGE value="v2.0整合数据统计模块与域名分析模块" />
     <MESSAGE value="v2.1拆分域名分析为域名解析+覆盖资源区分+内外网区分" />
     <MESSAGE value="v2.2修改域名处理多线程" />
-    <option name="LAST_COMMIT_MESSAGE" value="v2.2修改域名处理多线程" />
+    <MESSAGE value="完善支持" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善支持" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -795,6 +797,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1292">
           <caret line="74" column="31" lean-forward="true" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -975,6 +978,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="259">
           <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1040,6 +1044,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-294">
           <caret line="43" column="39" lean-forward="false" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
