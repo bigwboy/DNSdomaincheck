@@ -3,10 +3,11 @@
 #VERSION:1.0
 #__OUTHOR__:guangguang
 #Email:kevinliu830829@163.com
-import DNS
+#import DNS
 import RoadWriteFile
 import MyDomainAnalysisThread
 import re
+import dns.resolver
 #开线程
 def DomainAnalysisThreading(DomainDict):
     DomainListNum=len(DomainDict)
@@ -39,34 +40,30 @@ def DomainAnalysisThreading(DomainDict):
 
 #解析域名
 def DomainAnalysis(Domain):
-    DNS.DiscoverNameServers()
-    reqobj = DNS.Request()
-    reqobj.defaults['server'] = ['113.215.2.222']
-    ReturnData=[]
-    Returndomain=[]
-    Returndomain.append(Domain)
-    j=False
+    ReturnData = []
+    Returndomain = []
+    my_resolver = dns.resolver.Resolver()
+    my_resolver.nameservers=['113.215.2.222']
     try:
-        answerobj = reqobj.req(name=Domain,qtype = DNS.Type.A)
-        x = answerobj.answers
-        if not x:
-            ReturnData.append(str(Domain) + "," + "False" )
-        else:
-            for donequeries in x:
-                i = 1
-                if j:
-                    break
-                if donequeries['typename'] == "CNAME":  # 判断是否含有CNAME
-                    DomainCname = donequeries['data']
-                    Returndomain.append(DomainCname)
-                elif donequeries['typename'] == "A":
-                    re_ip = re.compile('\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$')  # 判断IP
-                    if re_ip.match(donequeries['data']):  # 直到IP停止
-                        A = donequeries['data']
-
+        DomainCname=my_resolver.query(Domain,'CNAME')
+        for i in DomainCname.response.answer:
+            for j in i.items:
+                print j
+                pass
     except Exception,e:
-        print e
+        Returndomain.append(Domain+','+'无CNAME')
+
+    try:
+        DomainA=my_resolver.query(Domain,'A')
+        for i in DomainA.response.answer:
+            for j in i.items:
+                print j.address
         pass
+    except:
+        pass
+
+
+
     return ReturnData
 
 
