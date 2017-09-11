@@ -14,10 +14,8 @@ class MyThread(threading.Thread):
         self.Domain=Domain
         self.DomainNum=DomainNum
     def run(self):
-        AnalysitData= DomainAnalysis.DomainAnalysis(self.Domain) #单个进程处理单个文件
+        AnalysitData= DomainAnalysis.DomainAnalysis(self.Domain) #单个进程处理单个域名
         AnalysitData.opera()
-        #print "12121" +str(self.file_data)
-        #self.stop() #完成后关闭线程
     def stop(self):
         self.thread_stop = True
         print "线程关闭~!!"

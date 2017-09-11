@@ -6,6 +6,7 @@
 import DNS
 import RoadWriteFile
 import MyDomainAnalysisThread
+import re
 #开线程
 def DomainAnalysisThreading(DomainDict):
     DomainListNum=len(DomainDict)
@@ -43,15 +44,30 @@ def DomainAnalysis(Domain):
     reqobj.defaults['server'] = ['113.215.2.222']
     ReturnData=[]
     Returndomain=[]
+    Returndomain.append(Domain)
     j=False
     try:
         answerobj = reqobj.req(name=Domain,qtype = DNS.Type.A)
         x = answerobj.answers
         if not x:
             ReturnData.append(str(Domain) + "," + "False" )
+        else:
+            for donequeries in x:
+                i = 1
+                if j:
+                    break
+                if donequeries['typename'] == "CNAME":  # 判断是否含有CNAME
+                    DomainCname = donequeries['data']
+                    Returndomain.append(DomainCname)
+                elif donequeries['typename'] == "A":
+                    re_ip = re.compile('\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$')  # 判断IP
+                    if re_ip.match(donequeries['data']):  # 直到IP停止
+                        A = donequeries['data']
+
     except Exception,e:
         print e
         pass
+    return ReturnData
 
 
 

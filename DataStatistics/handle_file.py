@@ -27,18 +27,29 @@ class handle():   #处理文件类
                 LocalIp=[]
                 for line in lines:
                     i = i + 1
-                    DataList = line.split('|')
-                    # 判断字符是否为异常
-                    if len(DataList) < 3:
-                        continue
-                    for Data in DataList:
 
-                        if self.DomainReg.match(Data):
+                    #######某某广电DNS专用
+                    #DataList = line.split('|')
+                    # if len(DataList) < 3:
+                    #     continue
+                    # for Data in DataList:
+                    #
+                    #     if self.DomainReg.match(Data):
+                    #         # 域名判断
+                    #         Domain.append(Data)
+                    #     elif self.IpRegre_ip.match(Data):
+                    #         # ip判断
+                    #         LocalIp.append(Data)
+
+                    ###############流控数据
+                    DataList=line.split()
+                    Data=DataList[0]
+                    if self.DomainReg.match(Data):
                             # 域名判断
-                            Domain.append(Data)
-                        elif self.IpRegre_ip.match(Data):
+                            Domain.append(str(Data))
+                    elif self.IpRegre_ip.match(str(Data)):
                             # ip判断
-                            LocalIp.append(Data)
+                            LocalIp.append(str(Data))
 
 
                 return Domain

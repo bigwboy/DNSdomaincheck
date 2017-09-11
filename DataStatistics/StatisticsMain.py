@@ -70,6 +70,6 @@ def DataStatistics(file_name):
 if __name__ == "__main__":
     try:
         #file_name=sys.argv[1]
-        DataStatistics('D:\pythonobject\DNSdomaincheck\AnalyzeData\jiangsudns20170731')
+        DataStatistics('D:\pythonobject\DNSdomaincheck\AnalyzeData\quanzhou.txt')
     except:
         print "错误：请输入需要分析的文件名！"
